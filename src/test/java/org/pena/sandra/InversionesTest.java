@@ -31,40 +31,51 @@ public class InversionesTest
         return new TestSuite( InversionesTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     * @throws IOException 
-     * @throws FileNotFoundException 
-     */
     public void testLote01() throws FileNotFoundException, IOException
     {
-    	int[] v1 = Util.generateVectorFromFile("lotes/lote01.txt");
-    	Util.printVector(v1);
-    	int result = Inversiones.countSplitInversion(v1);
-        assertEquals(result, (int)1549953513);
+    	Inversiones inv = new Inversiones();
+    	Util util = new Util();
+    	int[] v1 = util.generateVectorFromFile("lotes/lote01.txt");
+    	long expected = Long.parseLong("15629915671");
+    	long result = inv.getInvCount(v1, v1.length);
+        assertEquals(expected, result);
     }
     
-    /**
-     * Rigourous Test :-)
-     * @throws IOException 
-     * @throws FileNotFoundException 
-     */
     public void testLote02() throws FileNotFoundException, IOException
     {
-    	int[] v2 = Util.generateVectorFromFile("lotes/lote02.txt");
-    	int result = Inversiones.countSplitInversion(v2);
-        assertEquals(2062283231, result);
+    	Inversiones inv = new Inversiones();
+    	Util util = new Util();
+    	int[] v2 = util.generateVectorFromFile("lotes/lote02.txt");
+    	long expected = Long.parseLong("62362226209");
+    	long result = inv.countSplitInversion(v2);
+        assertEquals(expected, result);
     }
     
-    /**
-     * Rigourous Test :-)
-     * @throws IOException 
-     * @throws FileNotFoundException 
-     */
     public void testLote03() throws FileNotFoundException, IOException
     {
-    	int[] v3 = Util.generateVectorFromFile("lotes/lote03.txt");
-    	int result = Inversiones.countSplitInversion(v3);
-        assertEquals(935549201, result);
+    	Inversiones inv = new Inversiones();
+    	Util util = new Util();
+    	int[] v3 = util.generateVectorFromFile("lotes/lote03.txt");
+    	long result = inv.countSplitInversion(v3);
+    	long expected = Long.parseLong("250043652369");
+        assertEquals(expected, result);
+    }
+    
+    public void testLoteFixed() throws FileNotFoundException, IOException
+    {
+    	Inversiones inv = new Inversiones();
+    	int[] v1 = {3, 5, 2, 7, 6, 8};
+    	long expected = inv.getInvCount(v1, v1.length);
+    	long result = inv.countSplitInversion(v1);
+        assertEquals(expected, result);
+    }
+    
+    public void testLoteFixed2() throws FileNotFoundException, IOException
+    {
+    	Inversiones inv = new Inversiones();
+    	int[] v1 = {3, 5, 2, 7, 6, 8, 1};
+    	long expected = inv.getInvCount(v1, v1.length);
+    	long result = inv.countSplitInversion(v1);
+        assertEquals(expected, result);
     }
 }

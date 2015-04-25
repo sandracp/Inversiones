@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Util {
-	public static int[] generateVectorFromFile(String path) throws FileNotFoundException, IOException {
+	public int[] generateVectorFromFile(String path) throws FileNotFoundException, IOException {
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		File file = new File(path);
 		FileInputStream fis = new FileInputStream(file);
@@ -28,7 +28,7 @@ public class Util {
 		return convertIntegers(numbers);
     }
 	
-	public static int[] convertIntegers(List<Integer> integers)
+	public int[] convertIntegers(List<Integer> integers)
 	{
 	    int[] ret = new int[integers.size()];
 	    Iterator<Integer> iterator = integers.iterator();
@@ -40,8 +40,10 @@ public class Util {
 	}
 	
 	public static void printVector(int[] v) {
-		for (int i = 0; i < v.length; i += 1) {
+		System.out.println("");
+		for (int i = 0; i < 10; i += 1) {
             System.out.print(" " + v[i]);
         }
+		System.out.println("");
 	}
 }
